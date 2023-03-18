@@ -14,7 +14,7 @@ public class ContaBancariaTest {
 	@Test
 	public void sacarTest() {
 		ContaBancaria c1= new ContaBancaria(1, "Gustavo");
-		c1.depositar(1000);
+		c1.depositor(1000);
 		c1.sacar(100);
 		Assert.assertEquals(c1.getSaldo(), 900, 0);
 	}
@@ -62,7 +62,7 @@ public class ContaBancariaTest {
 	@Test
 	public void depositarValorTest() {
 		ContaBancaria c1= new ContaBancaria(1, "Gustavo");
-		c1.depositar(1000);
+		c1.depositor(1000);
 		Assert.assertEquals(c1.getSaldo(), 1000, 0);
 	}
 	
@@ -74,7 +74,7 @@ public class ContaBancariaTest {
 		PrintStream ps = new PrintStream(baos);
 		PrintStream old = System.out;
 		System.setOut(ps);
-		c1.depositar(-100);
+		c1.depositor(-100);
 		System.setOut(old);
 		Assert.assertTrue(errorContaInativa.equals(baos.toString()));
 	}
@@ -101,7 +101,7 @@ public class ContaBancariaTest {
 		PrintStream ps = new PrintStream(baos);
 		PrintStream old = System.out;
 		System.setOut(ps);
-		c1.depositar(100);
+		c1.depositor(100);
 		c1.fecharConta();
 		System.setOut(old);
 		Assert.assertTrue(errorContaInativa.equals(baos.toString()));
@@ -111,7 +111,7 @@ public class ContaBancariaTest {
 	public void realizarTransferenciaTest() {
 		ContaBancaria c1= new ContaBancaria(1, "Gustavo");
 		ContaBancaria c2= new ContaBancaria(2, "Joao");
-		c1.depositar(100);
+		c1.depositor(100);
 		c1.realizarTransferencia(50, c2);
 		Assert.assertEquals(50, c2.getSaldo(), 0);
 	}
@@ -125,7 +125,7 @@ public class ContaBancariaTest {
 		PrintStream ps = new PrintStream(baos);
 		PrintStream old = System.out;
 		System.setOut(ps);
-		c1.depositar(100);
+		c1.depositor(100);
 		c1.realizarTransferencia(110, c2);
 		System.setOut(old);
 		Assert.assertTrue(errorContaInativa.equals(baos.toString()));
@@ -141,7 +141,7 @@ public class ContaBancariaTest {
 		PrintStream ps = new PrintStream(baos);
 		PrintStream old = System.out;
 		System.setOut(ps);
-		c1.depositar(100);
+		c1.depositor(100);
 		c2.fecharConta();
 		c1.realizarTransferencia(50, c2);
 		System.setOut(old);
